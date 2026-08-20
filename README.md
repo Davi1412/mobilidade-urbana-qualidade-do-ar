@@ -26,7 +26,8 @@ O assistente de IA usa modelos locais disponibilizados pelo Ollama. Somente indi
 ├── pages/                       # Mapa, qualidade do ar e assistente de IA
 ├── services/                    # Consultas, gráficos, mapas e integração Ollama
 ├── scripts/                     # Coleta e importação de dados
-├── dados_brutos/                # Arquivos de origem utilizados no estudo
+├── dados_brutos/
+│   └── cetesb_atualizados/      # Relatórios CETESB utilizados no estudo
 ├── database/schema.sql          # Estrutura do PostgreSQL/PostGIS
 ├── db.py                        # Conexão com o banco
 └── requirements.txt
@@ -137,7 +138,8 @@ streamlit run app.py
 
 ## Observações
 
-- Os dados refletem as datas e janelas presentes nos arquivos versionados.
+- Somente os relatórios de `dados_brutos/cetesb_atualizados/` são utilizados
+  na importação da qualidade do ar.
 - A disponibilidade das medições depende da correspondência entre estação, data e hora das posições dos ônibus.
 - Credenciais do PostgreSQL e o token da SPTrans não estão incluídos no repositório.
 - O assistente produz análises auxiliares e suas respostas devem ser revisadas pelo usuário.
