@@ -1,0 +1,1 @@
+"""Componentes reutilizáveis do dashboard Weather Report."""

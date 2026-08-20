@@ -1,0 +1,10 @@
+folium
+numpy
+ollama
+pandas
+plotly
+psycopg2-binary
+python-dotenv
+requests
+streamlit
+streamlit-folium
