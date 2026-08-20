@@ -203,6 +203,37 @@ def exibir_cabecalho() -> None:
     )
 
 
+def exibir_aviso_assistente_local() -> None:
+    """Explica os requisitos opcionais do assistente de IA local."""
+
+    st.info(
+        "**Assistente de IA local (recurso opcional):** o dashboard pode "
+        "ser utilizado normalmente sem IA. Para usar o assistente, é "
+        "necessário instalar o Ollama, manter o serviço em execução e "
+        "baixar ao menos um modelo local. Se nenhum modelo for encontrado, "
+        "a mensagem de indisponibilidade é esperada e não representa erro "
+        "da aplicação."
+    )
+
+    with st.expander("Como habilitar o assistente de IA"):
+        st.markdown(
+            """
+            1. Instale o **Ollama** no computador.
+            2. Baixe um modelo local, por exemplo:
+
+               ```bash
+               ollama pull llama3.2:3b
+               ```
+
+            3. Mantenha o Ollama ativo em `http://localhost:11434`.
+            4. Abra a página **Assistente IA** e selecione o modelo instalado.
+
+            O processamento é executado localmente e não utiliza APIs pagas
+            de Inteligência Artificial.
+            """
+        )
+
+
 def resumir_selecao(
     valores,
     rotulo_todos: str,
@@ -558,14 +589,16 @@ def main() -> None:
 
     Ordem de execução:
     1. Aplica o estilo e exibe o cabeçalho.
-    2. Lê os filtros globais da sidebar.
-    3. Executa todas as consultas com o mesmo recorte.
-    4. Exibe KPIs, resumos, gráficos e tabela.
-    5. Mostra detalhes técnicos caso ocorra uma exceção.
+    2. Informa os requisitos opcionais do assistente de IA local.
+    3. Lê os filtros globais da sidebar.
+    4. Executa todas as consultas com o mesmo recorte.
+    5. Exibe KPIs, resumos, gráficos e tabela.
+    6. Mostra detalhes técnicos caso ocorra uma exceção.
     """
 
     aplicar_estilo()
     exibir_cabecalho()
+    exibir_aviso_assistente_local()
 
     try:
         filtros = exibir_sidebar_global()
